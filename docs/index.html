@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="CUTGLASS rhythmic spectral gate for bass, pads, and drones." />
+  <title>CUTGLASS — rhythmic spectral gate</title>
+  <script type="module" crossorigin src="./assets/index-kdNaKFrN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BMjrNfR4.css">
+</head>
+<body>
+  <main id="cutglass-app" data-product="CUTGLASS">
+    <header class="mast">
+      <div class="brand"><span class="mark" aria-hidden="true">◩</span><div><h1>CUTGLASS</h1><p>rhythmic spectral gate</p></div></div>
+      <div class="transport" aria-label="Transport controls">
+        <button id="play" class="primary">PLAY</button><button id="stop">STOP</button>
+        <label class="tempo">BPM <input id="bpm" type="number" min="70" max="190" value="140" inputmode="numeric"></label>
+      </div>
+      <button id="export" class="export">EXPORT WAV</button>
+    </header>
+
+    <section class="workspace">
+      <aside class="source panel">
+        <div class="panel-head"><span>01 / SOURCE</span><span id="source-status" class="status">FIXTURE ARMED</span></div>
+        <div class="source-orbit" aria-hidden="true"><canvas id="scope" width="440" height="230"></canvas><span>LOCAL SIGNAL</span></div>
+        <div class="load-row"><label class="file-button" for="audio-file">LOAD AUDIO</label><input id="audio-file" type="file" accept="audio/*"><button id="fixture">USE REESE FIXTURE</button></div>
+        <p class="hint">load a sustained bass, pad, or drone. audio never leaves this browser.</p>
+        <div class="recipes" aria-label="Pattern recipes">
+          <button data-preset="rupture">HALFSTEP RUPTURE</button>
+          <button data-preset="skip">GARAGE SKIP</button>
+          <button data-preset="teeth">ROLLER TEETH</button>
+        </div>
+      </aside>
+
+      <section class="machine">
+        <div class="panel-head"><span>02 / CUT SEQUENCE</span><span id="queue-status" class="status">LIVE</span></div>
+        <div class="legend"><span><i class="l-cut"></i>CUT</span><span><i class="l-ghost"></i>GHOST</span><span><i class="l-open"></i>OPEN</span><span><i class="l-ratchet"></i>RATCHET</span></div>
+        <div id="steps" class="steps" aria-label="16 step gate pattern"></div>
+        <div class="playline"><span id="playhead"></span></div>
+        <p class="instruction">tap a shard to cycle cut → ghost → open → ratchet. drag across shards to paint.</p>
+      </section>
+
+      <aside class="shape panel">
+        <div class="panel-head"><span>03 / MATERIAL</span><button id="reset" class="text-button">RESET</button></div>
+        <div class="control-group">
+          <span class="group-label">ENVELOPE</span>
+          <div class="segmented" id="edge" role="group" aria-label="Gate envelope">
+            <button data-value="knife" class="active">KNIFE</button><button data-value="pulse">PULSE</button><button data-value="bloom">BLOOM</button>
+          </div>
+        </div>
+        <label class="range"><span><b>SPECTRAL BIAS</b><output id="tone-out">CENTER</output></span><input id="tone" type="range" min="-1" max="1" value="0" step="0.01"></label>
+        <label class="range"><span><b>FRACTURE</b><output id="fracture-out">32%</output></span><input id="fracture" type="range" min="0" max="1" value="0.32" step="0.01"></label>
+        <label class="range"><span><b>AFTERIMAGE</b><output id="echo-out">18%</output></span><input id="echo" type="range" min="0" max="0.65" value="0.18" step="0.01"></label>
+        <div class="ab-row"><button id="bypass">HOLD FOR SOURCE</button><span>A/B preserves phase</span></div>
+        <div class="meter"><span id="meter-fill"></span></div>
+        <div id="notice" class="notice" aria-live="polite">ready. fixture gives you a dirty sustained reese.</div>
+      </aside>
+    </section>
+
+    <footer><span>one bar / stereo / 48 kHz PCM</span><span>space: play · e: export</span><span id="checksum">STATE —</span></footer>
+  </main>
+</body>
+</html>
